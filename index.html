@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Page</title>
+    {% comment %} <link rel="stylesheet" href="styles.css"> {% endcomment %}
+    
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.news-item {
+    width: 300px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.news-item img {
+    width: 100%;
+    height: auto;
+}
+
+.news-item h2 {
+    margin: 10px;
+}
+
+.news-item p {
+    margin: 10px;
+}
+
+.read-more {
+    display: block;
+    text-align: right;
+    margin: 10px;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #f4f4f4;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Latest News</h1>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="./news.html">News</a>
+            <a href="./index.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="news-container">
+            <article class="news-item">
+                <img src="./2Gxr6gyDcha3P-w9cQHWkZWBaJJ-yRWU.jpg" alt="News 1">
+                <h2>Yosh jurnalistlar jamiyat uchun nega muhim? Amerikalik maktab o‘quvchisining mulohazalari</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non urna vitae risus consectetur tincidunt.</p>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+
+            <article class="news-item">
+                <img src="./a.jpg" alt="News 2">
+                <h2>
+                    Jahon | 12:03 / 13.08.2024
+                    18892
+                    9 daqiqa o‘qiladi
+                    «Kursk oblastidagi amaliyot». Zelenskiy va Putin bu haqda nimalar demoqda?</h2>
+                <p>Suspendisse potenti. Nam vel justo hendrerit, pulvinar nisi id, condimentum magna.</p>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 News Website</p>
+    </footer>
+
+    <script>document.addEventListener("DOMContentLoaded", () => {
+        const readMoreLinks = document.querySelectorAll('.read-more');
+        
+        readMoreLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                alert('Redirecting to the full news article.');
+                // Add redirection logic here.
+            });
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Carousel</title>
+    {% comment %} <link rel="stylesheet" href="styles.css"> {% endcomment %}
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 50px auto;
+    overflow: hidden;
+}
+
+.carousel-track-container {
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 300px;
+    margin-right: 15px;
+}
+
+.news-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.news-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.news-card h2 {
+    margin: 10px;
+}
+
+.news-card p {
+    padding: 0 10px;
+}
+
+.read-more {
+    display: block;
+    text-align: right;
+    margin: 10px;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.carousel-button.left {
+    left: 10px;
+}
+
+.carousel-button.right {
+    right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .carousel-slide {
+        min-width: 250px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Latest News</h1>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="/news">News</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="carousel-container">
+            <div class="carousel-track-container">
+                <ul class="carousel-track">
+                    <!-- Repeat for 17 news cards -->
+                    <li class="carousel-slide">
+                        <div class="news-card">
+                            <img src="./a.jpg" alt="News 1">
+                            <h2>News Title 1</h2>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </li>
+                    <li class="carousel-slide">
+                        <div class="news-card">
+                            <img src="./2Gxr6gyDcha3P-w9cQHWkZWBaJJ-yRWU.jpg" alt="News 1">
+                            <h2>News Title 1</h2>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </li> <li class="carousel-slide">
+                        <div class="news-card">
+                            <img src="./2Gxr6gyDcha3P-w9cQHWkZWBaJJ-yRWU.jpg" alt="News 1">
+                            <h2>News Title 1</h2>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </li> <li class="carousel-slide">
+                        <div class="news-card">
+                            <img src="./2Gxr6gyDcha3P-w9cQHWkZWBaJJ-yRWU.jpg" alt="News 1">
+                            <h2>News Title 1</h2>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </li>
+                    <!-- Repeat for more cards... -->
+                </ul>
+            </div>
+
+            <button class="carousel-button left">&larr;</button>
+            <button class="carousel-button right">&rarr;</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 News Website</p>
+    </footer>
+
+    <script>document.addEventListener("DOMContentLoaded", () => {
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector('.carousel-button.right');
+        const prevButton = document.querySelector('.carousel-button.left');
+        const slideWidth = slides[0].getBoundingClientRect().width;
+    
+        // Arrange the slides next to one another
+        const setSlidePosition = (slide, index) => {
+            slide.style.left = slideWidth * index + 'px';
+        };
+        slides.forEach(setSlidePosition);
+    
+        // Move to the target slide
+        const moveToSlide = (track, currentSlide, targetSlide) => {
+            track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+        };
+    
+        // Click right, move slides to the right
+        nextButton.addEventListener('click', e => {
+            const currentSlide = track.querySelector('.current-slide');
+            const nextSlide = currentSlide.nextElementSibling;
+    
+            moveToSlide(track, currentSlide, nextSlide);
+        });
+    
+        // Click left, move slides to the left
+        prevButton.addEventListener('click', e => {
+            const currentSlide = track.querySelector('.current-slide');
+            const prevSlide = currentSlide.previousElementSibling;
+    
+            moveToSlide(track, currentSlide, prevSlide);
+        });
+    });
+    </script>
+</body>
+</html>

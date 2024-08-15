@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Job Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.contact-section {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+}
+
+input, textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #f4f4f4;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="./news.html">News</a>
+            <a href="./cancat.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-section">
+            <h2>Job Application</h2>
+            <form id="contact-form">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone">
+
+                <label for="message">Cover Letter:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <label for="resume">Resume (PDF only):</label>
+                <input type="file" id="resume" name="resume" accept=".pdf" required>
+
+                <button type="submit">Submit Application</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Job Application Website</p>
+    </footer>
+
+    <script >document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById('contact-form');
+    
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+    
+            // Collect form data
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                message: formData.get('message'),
+                resume: formData.get('resume').name // File name for simplicity
+            };
+    
+            // For demonstration purposes, log data to the console
+            console.log('Form submitted:', data);
+    
+            // Clear the form
+            form.reset();
+    
+            // Optionally, show a success message or handle form submission
+            alert('Your application has been submitted successfully!');
+        });
+    });
+    </script>
+</body>
+</html>
